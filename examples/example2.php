@@ -6,7 +6,7 @@ require_once $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/main.php';
 
 $pc = new PHPChart();
 
-$pc->setSize(600, 800);
+$pc->setSize(800, 600);
 
 $pc->setBkg(245, 245, 255);
 
