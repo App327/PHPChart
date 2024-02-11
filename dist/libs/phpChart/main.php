@@ -7,7 +7,7 @@ class PHPChart {
  public $img;
 
  public function setSize($w, $h) {
-  $this->$img = imagecreatetruecolor($h, $w);
+  $this->$img = imagecreatetruecolor($w, $h);
  }
 
  public function setBkg($r, $g, $b) {
@@ -53,8 +53,10 @@ class PHPChart {
  public function setPHDC($price, $r, $ly, $nx, ...$text) {
   $textColor = imagecolorallocate($this->$img, 100, 100, 100);
   $lastY = $ly;
+  settype($nx, 'int');
   foreach($text as $t) {
    $y = $lastY - $price;
+   settype($y, 'int');
    imagettftext($this->$img, 10, $r, $nx, $y, $textColor, $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/fonts/Arial.ttf', $t);
    $lastY = $lastY - $price;
   }
@@ -63,6 +65,7 @@ class PHPChart {
  public function setVHDC($price, $r, $lx, $ny, ...$text) {
   $textColor = imagecolorallocate($this->$img, 100, 100, 100);
   $lastX = $lx;
+  settype($ny, 'int');
   foreach($text as $t) {
    $x = $lastX + $price;
    imagettftext($this->$img, 10, $r, $x, $ny, $textColor, $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/fonts/Arial.ttf', $t);
