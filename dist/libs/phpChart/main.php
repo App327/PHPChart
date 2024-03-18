@@ -6,18 +6,21 @@ class PHPChart {
 
  public $img;
 
+ // Создание изображения заданных размеров
  public function setSize($w, $h) {
   $this->$img = imagecreatetruecolor($w, $h);
  }
 
+// Фон изображения
  public function setBkg($r, $g, $b) {
   $bkgColor = imagecolorallocate($this->$img, $r, $g, $b);
   imagefill($this->$img, 0, 0, $bkgColor);
  }
 
+ // Название графика (вверху изображения)
  public function setName($nm, $x) {
   $textColor = imagecolorallocate($this->$img, 100, 100, 100);
-  imagettftext($this->$img, 20, 0, $x, 50, $textColor, $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/fonts/Arial.ttf', $nm);
+  imagettftext($this->$img, 20, 0, $x, 50, $textColor, $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/fonts/Roboto.ttf', $nm);
  }
 
  public function setD($x1, $y1, $x2, $y2) {
@@ -57,7 +60,7 @@ class PHPChart {
   foreach($text as $t) {
    $y = $lastY - $price;
    settype($y, 'int');
-   imagettftext($this->$img, 10, $r, $nx, $y, $textColor, $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/fonts/Arial.ttf', $t);
+   imagettftext($this->$img, 10, $r, $nx, $y, $textColor, $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/fonts/Roboto.ttf', $t);
    $lastY = $lastY - $price;
   }
  }
@@ -68,7 +71,7 @@ class PHPChart {
   settype($ny, 'int');
   foreach($text as $t) {
    $x = $lastX + $price;
-   imagettftext($this->$img, 10, $r, $x, $ny, $textColor, $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/fonts/Arial.ttf', $t);
+   imagettftext($this->$img, 10, $r, $x, $ny, $textColor, $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/fonts/Roboto.ttf', $t);
    $lastX = $lastX + $price;
   }
  }
@@ -78,7 +81,7 @@ class PHPChart {
   imageline($this->$img, $x1, $y1, $x2, $y2, $lineColor);
  }
 
- // Вывод изображения в браузер
+ // Вывод получившегося изображения в браузер
  public function output($type) {
   if ($type == 'png') {
    header('Content-Type: image/png');
