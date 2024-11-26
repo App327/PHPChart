@@ -34,7 +34,7 @@ class PHPChart {
   $lastY = $ly;
   $sx = $lx + $mx;
   $lc = $max / $price;
-  for($i = 0; $i <= $lc; $i++) {
+  for ($i = 0; $i <= $lc; $i++) {
    $y = $lastY - $price; 
    imageline($this->$img, $lx, $y, $sx, $y, $priceColor);
    imageline($this->$img, $sx, $y, $nx, $y, $lineColor);
@@ -46,7 +46,7 @@ class PHPChart {
   $priceColor = imagecolorallocate($this->$img, 100, 100, 100);
   $lastX = $lx;
   $lc = $max / $price;
-  for($i = 0; $i <= $lc; $i++) {
+  for ($i = 0; $i <= $lc; $i++) {
    $x = $lastX + $price; 
    imageline($this->$img, $x, $my, $x, $ny, $priceColor);
    $lastX = $lastX + $price;
@@ -57,7 +57,7 @@ class PHPChart {
   $textColor = imagecolorallocate($this->$img, 100, 100, 100);
   $lastY = $ly;
   settype($nx, 'int');
-  foreach($text as $t) {
+  foreach ($text as $t) {
    $y = $lastY - $price;
    settype($y, 'int');
    imagettftext($this->$img, 10, $r, $nx, $y, $textColor, $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/fonts/Roboto.ttf', $t);
@@ -69,7 +69,7 @@ class PHPChart {
   $textColor = imagecolorallocate($this->$img, 100, 100, 100);
   $lastX = $lx;
   settype($ny, 'int');
-  foreach($text as $t) {
+  foreach ($text as $t) {
    $x = $lastX + $price;
    imagettftext($this->$img, 10, $r, $x, $ny, $textColor, $_SERVER["DOCUMENT_ROOT"].'/dist/libs/phpChart/fonts/Roboto.ttf', $t);
    $lastX = $lastX + $price;
@@ -103,7 +103,7 @@ class PHPChart {
    imagejpeg($this->$img);
   } else {
    header('Content-Type: text/html');
-   exit('<p style="font-family: system-ui;"><b>PHPChart Error</b>: unknown value of the <code>$type</code> parameter in the <code>output()</code> function.</p><hr noshade color="silver"><p style="font-family: system-ui;">On line <b>'.debug_backtrace()[0]['line'].'</b> in <code>'.debug_backtrace()[0]['file'].'</code> file.</p>');
+   exit('<div style="font-family: sans-serif;"><p>[EN] <b>PHPChart Error</b>: unknown value of the <code>$type</code> parameter in the <code>output()</code> function.</p><hr noshade color="silver"><p>Line: <b>'.debug_backtrace()[0]['line'].'</b>, file: <code>'.debug_backtrace()[0]['file'].'</code>.</p><hr noshade color="grey;" /><p>[RU] <b>Ошибка PHPChart</b>: неизвестное значение параметра <code>$type</code> в функции <code>output()</code>.</p><hr noshade color="silver"><p>Строка: <b>'.debug_backtrace()[0]['line'].'</b>, файл: <code>'.debug_backtrace()[0]['file'].'</code>.</p></div>');
   }
  }
 
